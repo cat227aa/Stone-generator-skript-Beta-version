@@ -1,0 +1,140 @@
+# Functionaly section and custom drop
+# You can only change block generator (sponge to other block) and change chance to custom drop!
+on place:
+	if (event-block is sponge):
+		if (block above event-block is air):
+			set block above event-block to stone
+
+on break:
+	if (event-block is stone):
+		if (block below event-block is sponge):
+			wait 20 ticks
+			set block at location of event-block to stone
+
+			set {_drop::chance::coal} to 12
+			set {_drop::chance::gold} to 2.5
+			set {_drop::chance::iron} to 9 
+			set {_drop::chance::diamond} to 1.5
+			set {_drop::chance::lapis} to 2
+			set {_drop::chance::apple} to 5
+			set {_drop::chance::emerald} to 2
+			set {_drop::chance::redstone} to 15
+			
+			
+			chance of {_drop::chance::coal}%: 
+				set {_count} to random integer between 1 and 5
+				drop {_count} of coal at location of event-player
+				
+			chance of {_drop::chance::gold}%:
+				set {_count} to random integer between 1 and 3
+				drop {_count} of gold ingot at location of event-player
+				
+			chance of {_drop::chance::iron}%:
+				set {_count} to random integer between 1 and 2
+				drop {_count} of iron ingot at location of event-player
+				
+			chance of {_drop::chance::diamond}%:
+				set {_count} to random integer between 1 and 2
+				drop {_count} of diamond at location of event-player
+				
+			chance of {_drop::chance::lapis}%:
+				set {_count} to random integer between 4 and 8
+				drop {_count} of lapis lazuli at location of event-player
+
+			chance of {_drop::chance::apple}%:
+				set {_count} to random integer between 2 and 6
+				drop {_count} of apple at location of event-player
+				
+			chance of {_drop::chance::emerald}%: 
+				set {_count} to random integer between 1 and 4
+				drop {_count} of emerald at location of event-player
+				
+			chance of {_drop::chance::redstone}%: 
+				set {_count} to random integer between 3 and 12
+				drop {_count} of redstone at location of event-player
+
+
+#Stone generator Lvl 2
+
+on place:
+	if (event-block is end stone):
+		if (block above event-block is air):
+			set block above event-block to andesite
+
+on break:
+	if (event-block is andesite):
+		if (block below event-block is end stone):
+			wait 20 ticks
+			set block at location of event-block to andesite
+			
+			set {_drop::chance::coal} to 18
+			set {_drop::chance::gold} to 3.75
+			set {_drop::chance::iron} to 13.5
+			set {_drop::chance::diamond} to 2.25
+			set {_drop::chance::lapis} to 3
+			set {_drop::chance::apple} to 7.5
+			set {_drop::chance::emerald} to 3
+			set {_drop::chance::redstone} to 22.5
+			
+			
+			chance of {_drop::chance::coal}%: 
+				set {_count} to random integer between 1 and 5
+				drop {_count} of coal at location of event-player
+				
+			chance of {_drop::chance::gold}%:
+				set {_count} to random integer between 1 and 3
+				drop {_count} of gold ingot at location of event-player
+				
+			chance of {_drop::chance::iron}%:
+				set {_count} to random integer between 1 and 2
+				drop {_count} of iron ingot at location of event-player
+				
+			chance of {_drop::chance::diamond}%:
+				set {_count} to random integer between 1 and 2
+				drop {_count} of diamond at location of event-player
+				
+			chance of {_drop::chance::lapis}%:
+				set {_count} to random integer between 4 and 8
+				drop {_count} of lapis lazuli at location of event-player
+
+			chance of {_drop::chance::apple}%:
+				set {_count} to random integer between 2 and 6
+				drop {_count} of apple at location of event-player
+				
+			chance of {_drop::chance::emerald}%: 
+				set {_count} to random integer between 1 and 4
+				drop {_count} of emerald at location of event-player
+				
+			chance of {_drop::chance::redstone}%: 
+				set {_count} to random integer between 3 and 12
+				drop {_count} of redstone at location of event-player
+
+
+
+#Language and commands
+command /stonegenerator [<text>] [<text>] [<text>] [<text>] [<text>]:
+	
+	trigger:
+		
+		if arg 1 is not set:
+			send "&e&lhelp"
+			send "&f stonegenerator give generator [amount]&7 - give generator"
+
+			
+		if arg 1 is "give":
+			if arg 2 is "generator":
+				give 1 sponge named "&6&lStone Generator" with lore "&7The sponge generate stone!" to player
+							
+				
+				
+# How to change language?
+#	Replace Language and commands section to your language
+# 
+#Languages:
+#
+# Polski polish:
+# https://pastebin.com/aGViQQJv
+#
+# Deutsch german:
+# https://pastebin.com/mU85KsxF
+
